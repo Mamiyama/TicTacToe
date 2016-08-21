@@ -6,6 +6,7 @@ public class TicTacToe
 	private static int moveCount;
 	private static int turn;
 	private static Player playerOne, playerTwo;
+	private static Player winner;
 	
 	public TicTacToe()
 	{
@@ -39,8 +40,7 @@ public class TicTacToe
 				setTurn(1);
 			}
 			
-			if (checkCellsForWinner() == true)
-				winner = true;
+			winner = checkCellsForWinner();
 			
 			printBoard(board);
 		}
@@ -48,7 +48,7 @@ public class TicTacToe
 		finishGame();
 	}
 	
-	public static boolean checkCellsForWinner()
+	public boolean checkCellsForWinner()
 	{
 		boolean winner = false;
 		int[] sums = {	board[0][0].getFixedNum() + board[0][1].getFixedNum() + board[0][2].getFixedNum(),
@@ -62,13 +62,13 @@ public class TicTacToe
 					 																						
 		for (int sum : sums) {
 			if (sum == -LENGTH) {
-				playerTwo.setWinnerState(true);
+				this.winner = playerTwo;
 				winner = true;
 				break;
 			}
 			
 			if (sum == LENGTH) {
-				playerOne.setWinnerState(true);
+				this.winner = playerOne;
 				winner = true;
 				break;
 			}
@@ -77,14 +77,16 @@ public class TicTacToe
 		return winner;
 	}
 	
-	public static void finishGame()
+	public void finishGame()
 	{
 		 System.out.println("Finish!");
 		 
-		 if (playerOne.getWinnerState() == true)
-			 System.out.println("win,\nPlayer one is the winner!");
-		 else if (playerTwo.getWinnerState() == true)
-			 System.out.println("win,\nPlayer two is the winner!");
+		 if (winner != null)
+		 {
+			 System.out.println((winner.equals(playerOne))
+					 ? "Player one is the winner!"
+					 : "Player two is the winner!");
+		 }
 		 else
 			 System.out.println("draw");
 		 
