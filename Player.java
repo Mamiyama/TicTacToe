@@ -2,12 +2,11 @@ import java.util.Scanner;
 
 public class Player
 {
-	private static int numOfPlayers;
 	private Cell symbol;
 	
-	public Player()
+	public Player(int numOfPlayer)
 	{
-		if (++numOfPlayers == 1)
+		if (numOfPlayer == 1)
 			symbol = Cell.X;
 		else
 			symbol = Cell.O;
