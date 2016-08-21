@@ -23,8 +23,8 @@ public class TicTacToe
 	public void startGame()
 	{
 		boolean winner = false;
-		playerOne = new Player(1);
-		playerTwo = new Player(2);
+		playerOne = new Player(Cell.X);
+		playerTwo = new Player(Cell.O);
 
 		printCords();
 		
