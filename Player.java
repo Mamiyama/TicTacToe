@@ -4,19 +4,12 @@ public class Player
 {
 	private static int numOfPlayers;
 	private Cell symbol;
-	private boolean winnerState;
 	
 	public Player()
 	{
-		if (numOfPlayers++ < 2)
-			setSymbol();
-	}
-	
-	public void setSymbol()
-	{
-		if (numOfPlayers == 1)
+		if (++numOfPlayers == 1)
 			symbol = Cell.X;
-		else if (numOfPlayers == 2)
+		else
 			symbol = Cell.O;
 	}
 	
@@ -52,15 +45,5 @@ public class Player
 				System.out.println("\n$ Invalid cordinates!");
 			
 		}while (invalidInput);
-	}
-	
-	public boolean getWinnerState()
-	{
-		return winnerState;
-	}
-	
-	public void setWinnerState(boolean winnerState)
-	{
-		this.winnerState = winnerState;
 	}
 }
