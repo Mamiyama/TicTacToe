@@ -4,12 +4,9 @@ public class Player
 {
 	private Cell symbol;
 	
-	public Player(int numOfPlayer)
+	public Player(Cell symbol)
 	{
-		if (numOfPlayer == 1)
-			symbol = Cell.X;
-		else
-			symbol = Cell.O;
+		this.symbol = symbol;
 	}
 	
 	public void getMove()
